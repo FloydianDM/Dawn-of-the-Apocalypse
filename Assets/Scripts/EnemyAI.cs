@@ -4,69 +4,74 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+namespace DawnOfTheApocalypse
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private float chaseRange = 5f;
+    public class EnemyAI : MonoBehaviour
+    {
+        [SerializeField] private Transform target;
+        [SerializeField] private float chaseRange = 5f;
+        
+        private NavMeshAgent _navMeshAgent;
+        private float _distanceToTarget = Mathf.Infinity;
+        private bool _isProvoked = false;
+        
+        private void Start()
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+        
+        private void Update()
+        {
+            MeasureDistance();
     
-    private NavMeshAgent _navMeshAgent;
-    private float _distanceToTarget = Mathf.Infinity;
-    private bool _isProvoked = false;
+            if (_isProvoked)
+            {
+                EngageTarget();
+            }
+        }
     
-    private void Start()
-    {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-    }
+        private void EngageTarget()
+        {
+            if (_distanceToTarget >= _navMeshAgent.stoppingDistance)
+            {
+                ChaseTarget();
+            }
+            else if (_distanceToTarget < _navMeshAgent.stoppingDistance)
+            {
+                AttackTarget();
+            }
+        }
+        
+        private void ChaseTarget()
+        { 
+            _navMeshAgent.SetDestination(target.position);
+        }
     
-    private void Update()
-    {
-        MeasureDistance();
-
-        if (_isProvoked)
+        private void AttackTarget()
         {
-            EngageTarget();
+            Debug.Log("Attack!");
         }
-    }
-
-    private void EngageTarget()
-    {
-        if (_distanceToTarget >= _navMeshAgent.stoppingDistance)
-        {
-            ChaseTarget();
-        }
-        else if (_distanceToTarget < _navMeshAgent.stoppingDistance)
-        {
-            AttackTarget();
-        }
-    }
     
-    private void ChaseTarget()
-    { 
-        _navMeshAgent.SetDestination(target.position);
-    }
-
-    private void AttackTarget()
-    {
-        Debug.Log("Attack!");
-    }
-
-    private void MeasureDistance()
-    {
-        _distanceToTarget = Mathf.Abs(Vector3.Distance(target.position, transform.position));
-
-        if (_distanceToTarget <= chaseRange)
+        private void MeasureDistance()
         {
-            _isProvoked = true;
+            _distanceToTarget = Mathf.Abs(Vector3.Distance(target.position, transform.position));
+    
+            if (_distanceToTarget <= chaseRange)
+            {
+                _isProvoked = true;
+            }
+            else
+            {
+                _isProvoked = false;
+            }
         }
-        else
+    
+        private void OnDrawGizmosSelected()
         {
-            _isProvoked = false;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, chaseRange);
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
 }
+
+
