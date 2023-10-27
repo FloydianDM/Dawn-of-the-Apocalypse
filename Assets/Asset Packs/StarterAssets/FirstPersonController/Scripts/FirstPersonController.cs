@@ -256,9 +256,8 @@ namespace StarterAssets
 		{
 			if (_input.shoot)
 			{
-				_weapon.Shoot();
 				_input.shoot = false;
-				Debug.Log("Shoot");
+				_weapon.Shoot();
 			}
 		}
 

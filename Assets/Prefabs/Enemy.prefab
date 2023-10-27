@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 814790243589479833}
   - component: {fileID: 6526156408283176119}
   - component: {fileID: 358568495975376271}
+  - component: {fileID: 6914723197192460678}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -140,7 +141,7 @@ Transform:
   m_Children:
   - {fileID: 9007349303037033279}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &6526156408283176119
 NavMeshAgent:
@@ -156,7 +157,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -177,6 +178,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  chaseRange: 10
+--- !u!114 &6914723197192460678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5846996458746246340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6183d7c34a0b1c84e8cc89e68cfde86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHP: 100
 --- !u!1 &7602068563465023370
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,14 +218,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7602068563465023370}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.676, y: 0.548, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.548, z: 0.65}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9007349303037033279}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &2490635587213716345
 MeshFilter:
   m_ObjectHideFlags: 0

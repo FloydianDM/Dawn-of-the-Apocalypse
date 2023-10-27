@@ -49,6 +49,7 @@ namespace DawnOfTheApocalypse
     
         private void AttackTarget()
         {
+            // TODO: found bug: Attack executes even if the game object destroyed.
             Debug.Log("Attack!");
         }
     
