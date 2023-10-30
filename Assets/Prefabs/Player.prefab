@@ -185,8 +185,9 @@ GameObject:
   - component: {fileID: 1978471637655604388}
   - component: {fileID: 5420857361349278248}
   - component: {fileID: 8616685848737228376}
+  - component: {fileID: 1106466037992076624}
   m_Layer: 8
-  m_Name: PlayerCapsule
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,6 +401,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1106466037992076624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0cff0f39e0c6945a7821073894e1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &12031783130772025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -658,6 +671,8 @@ MonoBehaviour:
   shootRange: 100
   weaponDamage: 20
   muzzleFlash: {fileID: 6463926108351310786}
+  hitEffect: {fileID: 7226583673155636401, guid: 22219a93f847ae04494b5799e30b48c4, type: 3}
+  effectDuration: 0.4
 --- !u!1001 &7107356253217149898
 PrefabInstance:
   m_ObjectHideFlags: 0

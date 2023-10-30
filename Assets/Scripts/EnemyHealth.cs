@@ -11,6 +11,7 @@ namespace DawnOfTheApocalypse
     {
         [SerializeField] private float enemyHP = 100f;
         public float EnemyHP => enemyHP;
+        public bool isDead = false;
         
         public void TakeDamage(float damage)
         {
@@ -23,6 +24,7 @@ namespace DawnOfTheApocalypse
             if (enemyHP <= 0)
             {
                 Destroy(gameObject);
+                isDead = true;
             }
         }
     }

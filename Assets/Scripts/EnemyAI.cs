@@ -10,18 +10,25 @@ namespace DawnOfTheApocalypse
     {
         [SerializeField] private Transform target;
         [SerializeField] private float chaseRange = 5f;
-        
+        [SerializeField] private float turnSpeed = 2f;
+
+        private EnemyHealth _enemyHealth;
         private NavMeshAgent _navMeshAgent;
+        private Animator _animator;
         private float _distanceToTarget = Mathf.Infinity;
         private bool _isProvoked = false;
-        
+
         private void Start()
         {
+            _enemyHealth = GetComponentInChildren<EnemyHealth>();
+            _animator = GetComponent<Animator>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
         }
         
         private void Update()
         {
+            if (_enemyHealth.isDead) return;
+            
             MeasureDistance();
     
             if (_isProvoked)
@@ -32,6 +39,8 @@ namespace DawnOfTheApocalypse
     
         private void EngageTarget()
         {
+            FaceTarget();
+            
             if (_distanceToTarget >= _navMeshAgent.stoppingDistance)
             {
                 ChaseTarget();
@@ -44,13 +53,14 @@ namespace DawnOfTheApocalypse
         
         private void ChaseTarget()
         { 
+            _animator.SetBool("attack", false);
+            _animator.SetTrigger("move");
             _navMeshAgent.SetDestination(target.position);
         }
     
         private void AttackTarget()
         {
-            // TODO: found bug: Attack executes even if the game object destroyed.
-            Debug.Log("Attack!");
+            _animator.SetBool("attack", true);
         }
     
         private void MeasureDistance()
@@ -65,6 +75,13 @@ namespace DawnOfTheApocalypse
             {
                 _isProvoked = false;
             }
+        }
+
+        private void FaceTarget()
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed);
         }
     
         private void OnDrawGizmosSelected()
