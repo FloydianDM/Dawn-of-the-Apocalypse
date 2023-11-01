@@ -11,11 +11,18 @@ namespace DawnOfTheApocalypse
     {
         [SerializeField] private float enemyHP = 100f;
         public float EnemyHP => enemyHP;
+
         public bool isDead = false;
+        private EnemyAI _enemyAI;
         
+        private void Start()
+        {
+            _enemyAI = GetComponent<EnemyAI>();
+
+        }
         public void TakeDamage(float damage)
         {
-            BroadcastMessage("OnDamageTaken");
+            _enemyAI.OnDamageTaken();
             enemyHP -= damage;
             EnemyDeath();
         }
