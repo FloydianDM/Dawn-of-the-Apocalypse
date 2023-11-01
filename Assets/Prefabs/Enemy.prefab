@@ -143,7 +143,7 @@ Transform:
   m_Children:
   - {fileID: 9007349303037033279}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &6526156408283176119
 NavMeshAgent:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  chaseRange: 10
+  chaseRange: 20
   turnSpeed: 2
 --- !u!114 &1773840676608684727
 MonoBehaviour:

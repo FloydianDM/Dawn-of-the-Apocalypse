@@ -1,5 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using UnityEditor.Rendering.LookDev;
+
+
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -13,7 +18,10 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+
+		// my modifications to default input system
 		public bool shoot;
+		public bool zoom;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -50,10 +58,28 @@ namespace StarterAssets
 		{
 			ShootInput(value.isPressed);
 		}
+
+		public void OnZoom(InputValue value)
+		{
+			ZoomInput(value.isPressed);
+		}
+
+		public void OnZoom(InputAction.CallbackContext callbackContext)
+		{
+			if (callbackContext.performed)
+			{
+				ZoomInput(true);
+			}
+			else if (callbackContext.canceled)
+			{
+				ZoomInput(false);
+			}
+		}
+
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
@@ -77,6 +103,11 @@ namespace StarterAssets
 		{
 			shoot = newShootState;
 		}
+
+		public void ZoomInput(bool newZoomState)
+        {
+            zoom = newZoomState;
+        }
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{

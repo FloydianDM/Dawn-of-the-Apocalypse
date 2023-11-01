@@ -88,6 +88,10 @@ namespace StarterAssets
 			}
 		}
 
+		// my modifications to default input system
+		private Weapon _weapon;
+		private WeaponZoom _weaponZoom;
+
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -96,12 +100,11 @@ namespace StarterAssets
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
 		}
-
-		private Weapon _weapon;
 		
 		private void Start()
 		{
 			_weapon = FindObjectOfType<Weapon>();
+			_weaponZoom = FindObjectOfType<WeaponZoom>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
@@ -121,6 +124,7 @@ namespace StarterAssets
 			GroundedCheck();
 			Move();
 			Shoot();
+			Zoom();
 		}
 
 		private void LateUpdate()
@@ -258,6 +262,16 @@ namespace StarterAssets
 			{
 				_input.shoot = false;
 				_weapon.Shoot();
+			}
+		}
+
+		private void Zoom()
+		{
+			_weaponZoom.CameraZoom(false);
+
+			if (_input.zoom)
+			{
+				_weaponZoom.CameraZoom(true);
 			}
 		}
 
