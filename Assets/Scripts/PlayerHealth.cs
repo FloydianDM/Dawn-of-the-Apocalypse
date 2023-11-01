@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,13 @@ namespace DawnOfTheApocalypse
     public class PlayerHealth : MonoBehaviour
     {
         private float _playerHitPoint = 100f;
+
+        private UIController _uiController;
+
+        private void Start()
+        {
+            _uiController = FindObjectOfType<UIController>();
+        }
 
         public void TakeDamage(float damage)
         {
@@ -19,10 +27,10 @@ namespace DawnOfTheApocalypse
         {
             if (_playerHitPoint <= 0)
             {
-                Debug.Log("Player is dead.");
+                _uiController.isDead = true;
                 return true;
             }
-
+            
             return false;
         }
     }

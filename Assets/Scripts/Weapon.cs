@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
@@ -33,7 +34,7 @@ namespace DawnOfTheApocalypse
             if (Physics.Raycast(fpCamera.transform.position, fpCamera.transform.forward, out hit, shootRange))
             {
                 PlayHitEffect(hit);
-                EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                EnemyHealth target = hit.transform.GetComponentInParent<EnemyHealth>();
                 if (target == null) return;
                 target.TakeDamage(weaponDamage);
                 Debug.Log(target.EnemyHP);

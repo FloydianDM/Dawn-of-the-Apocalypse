@@ -15,6 +15,7 @@ namespace DawnOfTheApocalypse
         
         public void TakeDamage(float damage)
         {
+            BroadcastMessage("OnDamageTaken");
             enemyHP -= damage;
             EnemyDeath();
         }

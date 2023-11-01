@@ -16,11 +16,12 @@ namespace DawnOfTheApocalypse
         private NavMeshAgent _navMeshAgent;
         private Animator _animator;
         private float _distanceToTarget = Mathf.Infinity;
-        private bool _isProvoked = false;
+        private bool _isProvoked;
+        private bool _isDamageTaken;
 
         private void Start()
         {
-            _enemyHealth = GetComponentInChildren<EnemyHealth>();
+            _enemyHealth = GetComponent<EnemyHealth>();
             _animator = GetComponent<Animator>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
         }
@@ -35,6 +36,11 @@ namespace DawnOfTheApocalypse
             {
                 EngageTarget();
             }
+        }
+
+        public void OnDamageTaken()
+        {
+            _isDamageTaken = true;
         }
     
         private void EngageTarget()
@@ -67,7 +73,7 @@ namespace DawnOfTheApocalypse
         {
             _distanceToTarget = Mathf.Abs(Vector3.Distance(target.position, transform.position));
     
-            if (_distanceToTarget <= chaseRange)
+            if (_distanceToTarget <= chaseRange || _isDamageTaken)
             {
                 _isProvoked = true;
             }
