@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace DawnOfTheApocalypse
 {
+    /// <summary>
+    /// TODO: Fix WeaponSwitcher enabled = false
+    /// </summary>
     public class UIController : MonoBehaviour
     {
         [SerializeField] private Canvas gunReticleCanvas;
