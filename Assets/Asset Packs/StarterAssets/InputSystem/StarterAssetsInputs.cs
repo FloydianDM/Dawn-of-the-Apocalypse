@@ -22,9 +22,16 @@ namespace StarterAssets
 		// my modifications to default input system
 		public bool shoot;
 		public bool zoom;
+		public float switchValue; // have not completely implemented yet
+		public bool previousWeapon; 
+		public bool nextWeapon;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
+
+		[Header("Mouse Sensitivity")]
+		[SerializeField] private float mouseSensitivity = 1f;
+		[SerializeField] private float zoomInMouseSensitivity = 0.5f;
 
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
@@ -38,9 +45,20 @@ namespace StarterAssets
 
 		public void OnLook(InputValue value)
 		{
+			var input = value.Get<Vector2>();
+			
 			if(cursorInputForLook)
 			{
-				LookInput(value.Get<Vector2>());
+				if (zoom) // mouse sensitivity modification
+				{
+					input *= zoomInMouseSensitivity;	
+				}
+				else
+				{
+					input *= mouseSensitivity;
+				}
+
+				LookInput(input);
 			}
 		}
 
@@ -64,25 +82,29 @@ namespace StarterAssets
 			ZoomInput(value.isPressed);
 		}
 
-		public void OnZoom(InputAction.CallbackContext callbackContext)
+		public void OnSwitchWeapon(InputValue value)
 		{
-			if (callbackContext.performed)
-			{
-				ZoomInput(true);
-			}
-			else if (callbackContext.canceled)
-			{
-				ZoomInput(false);
-			}
+			switchValue = value.Get<float>();
+		}
+
+		public void OnPreviousWeapon(InputValue value)
+		{
+			PreviousWeaponInput(value.isPressed);	
+		}
+
+		public void OnNextWeapon(InputValue value)
+		{
+			NextWeaponInput(value.isPressed);	
 		}
 
 #endif
 
 
+
         public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+		}
 
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -108,6 +130,16 @@ namespace StarterAssets
         {
             zoom = newZoomState;
         }
+
+		private void PreviousWeaponInput(bool newPreviousWeaponState)
+        {
+            previousWeapon = newPreviousWeaponState;
+        }
+
+		private void NextWeaponInput(bool newNextWeaponState)
+		{
+			nextWeapon = newNextWeaponState;
+		}
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{

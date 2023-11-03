@@ -1,6 +1,11 @@
 ﻿using DawnOfTheApocalypse;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using System.Buffers.Text;
+using UnityEngine.UIElements.Experimental;
+
+
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -91,6 +96,7 @@ namespace StarterAssets
 		// my modifications to default input system
 		private Weapon _weapon;
 		private WeaponZoom _weaponZoom;
+		private WeaponSwitcher _weaponSwitcher;
 
 		private void Awake()
 		{
@@ -103,8 +109,9 @@ namespace StarterAssets
 		
 		private void Start()
 		{
-			_weapon = FindObjectOfType<Weapon>();
-			_weaponZoom = FindObjectOfType<WeaponZoom>();
+			_weapon = GetComponentInChildren<Weapon>();
+			_weaponZoom = GetComponentInChildren<WeaponZoom>();
+			_weaponSwitcher = GetComponentInChildren<WeaponSwitcher>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
@@ -125,6 +132,7 @@ namespace StarterAssets
 			Move();
 			Shoot();
 			Zoom();
+			SwitchWeapon();
 		}
 
 		private void LateUpdate()
@@ -258,20 +266,33 @@ namespace StarterAssets
 
 		private void Shoot()
 		{
-			if (_input.shoot)
+			if (_input.shoot && _weapon.isReadyToShoot)
 			{
-				_input.shoot = false;
-				_weapon.Shoot();
+				StartCoroutine(_weapon.Shoot());
 			}
 		}
 
 		private void Zoom()
 		{
-			_weaponZoom.CameraZoom(false);
+			_weaponZoom.CameraZoom(_input.zoom);
+		}
 
-			if (_input.zoom)
+		private void SwitchWeapon()
+		{
+			int index =_weaponSwitcher.CurrentWeaponIndex;
+
+			if (_input.previousWeapon && index > 0)
 			{
-				_weaponZoom.CameraZoom(true);
+				_input.previousWeapon = false;
+				index--;
+				_weaponSwitcher.SetWeaponActive(index);
+			}
+
+			if (_input.nextWeapon && index <_weaponSwitcher.WeaponIndex)  
+			{
+				_input.nextWeapon = false;
+				index++;
+				_weaponSwitcher.SetWeaponActive(index);
 			}
 		}
 

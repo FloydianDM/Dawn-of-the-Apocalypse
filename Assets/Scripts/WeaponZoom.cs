@@ -19,16 +19,11 @@ namespace DawnOfTheApocalypse
             _defaultFOV = virtualCamera.m_Lens.FieldOfView;
         }
 
-        private void Update()
-        {
-            
-        }
-
         public void CameraZoom(bool isZoomed)
         {
             if (isZoomed)
             {
-               virtualCamera.m_Lens.FieldOfView = zoomedFOV;     
+               virtualCamera.m_Lens.FieldOfView = zoomedFOV;
             }
             else
             {

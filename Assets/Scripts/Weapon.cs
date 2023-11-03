@@ -15,11 +15,29 @@ namespace DawnOfTheApocalypse
         [SerializeField] private ParticleSystem muzzleFlash;
         [SerializeField] private GameObject hitEffect;
         [SerializeField] private float effectDuration = 0.4f;
+        [SerializeField] private float fireRate = 0.5f;
+        [SerializeField] private Ammo ammoSlot;
 
-        public void Shoot()
+        public bool isReadyToShoot;
+
+        private void Start()
         {
-            PlayWeaponEffect();
-            ProcessRaycast();
+            isReadyToShoot = true;
+        }
+
+        public IEnumerator Shoot()
+        {
+            isReadyToShoot = false;
+
+            if (ammoSlot.AmmoAmount > 0)
+            {
+                PlayWeaponEffect();
+                ProcessRaycast();
+                ammoSlot.ReduceAmmo();    
+            }
+            
+            yield return new WaitForSeconds(fireRate);
+            isReadyToShoot = true;
         }
 
         private void PlayWeaponEffect()
