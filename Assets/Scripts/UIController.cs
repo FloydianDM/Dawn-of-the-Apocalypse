@@ -10,10 +10,12 @@ namespace DawnOfTheApocalypse
         [SerializeField] private Canvas gameOverCanvas;
 
         public bool isDead;
+        private WeaponSwitcher _weaponSwitcher;
     
         private void Start()
         {
             gameOverCanvas.enabled = false;
+            _weaponSwitcher = FindObjectOfType<WeaponSwitcher>();
         }
 
         private void Update()
@@ -32,12 +34,14 @@ namespace DawnOfTheApocalypse
                 gameOverCanvas.enabled = true;
                 
                 Time.timeScale = 0;
+                _weaponSwitcher.enabled = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
             else
             {
                 Time.timeScale = 1;
+                _weaponSwitcher.enabled = true;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
