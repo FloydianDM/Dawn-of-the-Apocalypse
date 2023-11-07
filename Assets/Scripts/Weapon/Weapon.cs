@@ -7,6 +7,11 @@ using UnityEngine.Rendering.Universal;
 
 namespace DawnOfTheApocalypse
 {
+    /// <summary>
+    /// known bug:
+    /// MuzzleFlash VFX is not working for second weapon.
+    /// Try OnDisable()
+    /// </summary>
     public class Weapon : MonoBehaviour
     {
         [SerializeField] private Camera fpCamera;
