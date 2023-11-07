@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e33a983aceea1f847a222ab8e58c505a, type: 3}
       propertyPath: m_Name
-      value: Gun1
+      value: Shotgun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpCamera: {fileID: 0}
-  shootRange: 20
+  shootRange: 40
   weaponDamage: 30
   muzzleFlash: {fileID: 1623605187737183948}
   hitEffect: {fileID: 7226583673155636401, guid: 22219a93f847ae04494b5799e30b48c4, type: 3}

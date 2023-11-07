@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &93054123 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2024164230481805529, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+  m_PrefabInstance: {fileID: 6762004881644359596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &108038324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8345070699079395523, guid: 09aade0ecefd01e4b8f7661acf64f5c2, type: 3}
@@ -969,10 +974,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2997872057864229605, guid: 1e7ad7b5c1b35a54b83e25fd3f404a1a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1908013837}
     - target: {fileID: 3083614283525137873, guid: 1e7ad7b5c1b35a54b83e25fd3f404a1a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1021,15 +1022,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 7678874339721476740, guid: 1e7ad7b5c1b35a54b83e25fd3f404a1a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1908013837}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e7ad7b5c1b35a54b83e25fd3f404a1a, type: 3}
+--- !u!198 &1181955033 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5025045010705386949, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+  m_PrefabInstance: {fileID: 6762004881644359596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1238053801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3248315488105561783, guid: 687dbafc2b84b2846b9a4a7a7dae2a7e, type: 3}
@@ -1527,17 +1529,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 814790243589479833, guid: 734cac433e6e96542a0a7523aa53f4d3, type: 3}
   m_PrefabInstance: {fileID: 564655929}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1908013837 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2393658301684620136, guid: 629120d34bf96024f9ed508556b9c577, type: 3}
-  m_PrefabInstance: {fileID: 5458191763327750344}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 046e7b5d5b94b5f41b44d0075b106d4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1968707449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 814790243589479833, guid: 734cac433e6e96542a0a7523aa53f4d3, type: 3}
@@ -1754,6 +1745,14 @@ PrefabInstance:
       propertyPath: currentWeaponIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2328239836421148776, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 1181955033}
+    - target: {fileID: 4537267987945998297, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 93054123}
     - target: {fileID: 5368648846044913036, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
       propertyPath: m_Name
       value: Player

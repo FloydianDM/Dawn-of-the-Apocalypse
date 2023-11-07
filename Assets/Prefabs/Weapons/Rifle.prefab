@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e33a983aceea1f847a222ab8e58c505a, type: 3}
       propertyPath: m_Name
-      value: Rifle Variant
+      value: Rifle
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e33a983aceea1f847a222ab8e58c505a, type: 3}
       propertyPath: m_IsActive
@@ -214,13 +214,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpCamera: {fileID: 0}
-  shootRange: 50
+  shootRange: 80
   weaponDamage: 20
-  muzzleFlash: {fileID: 2462878831614115398}
   hitEffect: {fileID: 7226583673155636401, guid: 22219a93f847ae04494b5799e30b48c4, type: 3}
   effectDuration: 0.4
   fireRate: 0.4
   ammoSlot: {fileID: 0}
+  ammoType: 1
   isReadyToShoot: 0
 --- !u!114 &4062276244146530099
 MonoBehaviour:
@@ -267,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5029230983027293876, guid: 1722737e68f1da8449eb8af0e02faefe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.45
+      value: -4.44
       objectReference: {fileID: 0}
     - target: {fileID: 5029230983027293876, guid: 1722737e68f1da8449eb8af0e02faefe, type: 3}
       propertyPath: m_LocalRotation.w
@@ -302,11 +302,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1722737e68f1da8449eb8af0e02faefe, type: 3}
---- !u!198 &2462878831614115398 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6457814813386021371, guid: 1722737e68f1da8449eb8af0e02faefe, type: 3}
-  m_PrefabInstance: {fileID: 8913506999934724029}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4501428688346929417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5029230983027293876, guid: 1722737e68f1da8449eb8af0e02faefe, type: 3}

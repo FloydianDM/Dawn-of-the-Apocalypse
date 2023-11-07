@@ -100,6 +100,8 @@ namespace StarterAssets
 
 		private void Awake()
 		{
+			_weapon = GetComponentInChildren<Weapon>();
+			
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
@@ -109,7 +111,6 @@ namespace StarterAssets
 		
 		private void Start()
 		{
-			_weapon = GetComponentInChildren<Weapon>();
 			_weaponZoom = GetComponentInChildren<WeaponZoom>();
 			_weaponSwitcher = GetComponentInChildren<WeaponSwitcher>();
 			_controller = GetComponent<CharacterController>();
