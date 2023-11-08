@@ -28,7 +28,11 @@ namespace DawnOfTheApocalypse
         
         private void Update()
         {
-            if (_enemyHealth.isDead) return;
+            if (_enemyHealth.isDead)
+            {
+                this.enabled = false;
+                _navMeshAgent.enabled = false;
+            }
             
             MeasureDistance();
     
@@ -60,8 +64,9 @@ namespace DawnOfTheApocalypse
         private void ChaseTarget()
         { 
             _animator.SetBool("attack", false);
-            _animator.SetTrigger("move");
+            _animator.SetTrigger("move");       
             _navMeshAgent.SetDestination(target.position);
+  
         }
     
         private void AttackTarget()

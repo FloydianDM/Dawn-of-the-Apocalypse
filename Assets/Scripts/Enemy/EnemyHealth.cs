@@ -13,11 +13,11 @@ namespace DawnOfTheApocalypse
         [SerializeField] private float enemyHP = 100f;
         public float EnemyHP => enemyHP;
 
-        private float _deathAnimationTime = 1f;
-        public bool isDead = false;
+        private float _deathAnimationTime = 2f;
         private EnemyAI _enemyAI;
         private Animator _enemyAnimator;
-        
+        public bool isDead = false;
+
         private void Start()
         {
             _enemyAI = GetComponent<EnemyAI>();
@@ -26,6 +26,8 @@ namespace DawnOfTheApocalypse
 
         public void TakeDamage(float damage)
         {
+            if (isDead) return;
+            
             _enemyAI.OnDamageTaken();
             enemyHP -= damage;
             
@@ -38,7 +40,7 @@ namespace DawnOfTheApocalypse
         private void EnemyDeath()
         {
             _enemyAnimator.SetTrigger("die");
-            Destroy(gameObject, _deathAnimationTime);
+            // Destroy(gameObject, _deathAnimationTime);
             isDead = true;
         }
     }
