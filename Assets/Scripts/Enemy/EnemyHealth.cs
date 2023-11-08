@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace DawnOfTheApocalypse
@@ -12,28 +13,33 @@ namespace DawnOfTheApocalypse
         [SerializeField] private float enemyHP = 100f;
         public float EnemyHP => enemyHP;
 
+        private float _deathAnimationTime = 1f;
         public bool isDead = false;
         private EnemyAI _enemyAI;
+        private Animator _enemyAnimator;
         
         private void Start()
         {
             _enemyAI = GetComponent<EnemyAI>();
-
+            _enemyAnimator = GetComponent<Animator>();
         }
+
         public void TakeDamage(float damage)
         {
             _enemyAI.OnDamageTaken();
             enemyHP -= damage;
-            EnemyDeath();
+            
+            if (enemyHP <= 0)
+            {
+                EnemyDeath();
+            }
         }
 
         private void EnemyDeath()
         {
-            if (enemyHP <= 0)
-            {
-                Destroy(gameObject);
-                isDead = true;
-            }
+            _enemyAnimator.SetTrigger("die");
+            Destroy(gameObject, _deathAnimationTime);
+            isDead = true;
         }
     }
 }
