@@ -32,6 +32,7 @@ namespace DawnOfTheApocalypse
             {
                 this.enabled = false;
                 _navMeshAgent.enabled = false;
+                return;
             }
             
             MeasureDistance();
@@ -66,7 +67,6 @@ namespace DawnOfTheApocalypse
             _animator.SetBool("attack", false);
             _animator.SetTrigger("move");       
             _navMeshAgent.SetDestination(target.position);
-  
         }
     
         private void AttackTarget()
