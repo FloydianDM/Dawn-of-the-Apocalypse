@@ -97,6 +97,7 @@ namespace StarterAssets
 		private Weapon _weapon;
 		private WeaponZoom _weaponZoom;
 		private WeaponSwitcher _weaponSwitcher;
+		private DoorOpener _doorOpener;
 
 		private void Awake()
 		{
@@ -113,6 +114,7 @@ namespace StarterAssets
 		{
 			_weaponZoom = GetComponentInChildren<WeaponZoom>();
 			_weaponSwitcher = GetComponentInChildren<WeaponSwitcher>();
+			_doorOpener = FindObjectOfType<DoorOpener>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
@@ -134,6 +136,7 @@ namespace StarterAssets
 			Shoot();
 			Zoom();
 			SwitchWeapon();
+			OpenDoor();
 		}
 
 		private void LateUpdate()
@@ -294,6 +297,15 @@ namespace StarterAssets
 				_input.nextWeapon = false;
 				index++;
 				_weaponSwitcher.SetWeaponActive(index);
+			}
+		}
+
+		private void OpenDoor()
+		{
+			if (_input.interact)
+			{
+				_doorOpener.IsExecuteOpening = true;
+				_input.interact = false;	
 			}
 		}
 

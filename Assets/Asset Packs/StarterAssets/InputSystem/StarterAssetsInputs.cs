@@ -25,6 +25,7 @@ namespace StarterAssets
 		public float switchValue; // have not completely implemented yet
 		public bool previousWeapon; 
 		public bool nextWeapon;
+		public bool interact;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -97,6 +98,12 @@ namespace StarterAssets
 			NextWeaponInput(value.isPressed);	
 		}
 
+		public void OnInteract(InputValue value)
+		{
+			InteractInput(value.isPressed);
+			Debug.Log("Interact");
+		}
+
 #endif
 
 
@@ -139,6 +146,11 @@ namespace StarterAssets
 		private void NextWeaponInput(bool newNextWeaponState)
 		{
 			nextWeapon = newNextWeaponState;
+		}
+
+		private void InteractInput(bool interactionState)
+		{
+			interact = interactionState;
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)
