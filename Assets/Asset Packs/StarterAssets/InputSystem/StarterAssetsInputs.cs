@@ -26,6 +26,7 @@ namespace StarterAssets
 		public bool previousWeapon; 
 		public bool nextWeapon;
 		public bool interact;
+		public bool switchFlashLight;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -104,6 +105,12 @@ namespace StarterAssets
 			Debug.Log("Interact");
 		}
 
+		public void OnSwitchFlashlight(InputValue value)
+		{
+			SwitchFlashLightInput(value.isPressed);
+			Debug.Log("Switch Light");
+		}
+
 #endif
 
 
@@ -151,6 +158,11 @@ namespace StarterAssets
 		private void InteractInput(bool interactionState)
 		{
 			interact = interactionState;
+		}
+
+		private void SwitchFlashLightInput(bool switchFlashLightState)
+		{
+			switchFlashLight = switchFlashLightState;
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)

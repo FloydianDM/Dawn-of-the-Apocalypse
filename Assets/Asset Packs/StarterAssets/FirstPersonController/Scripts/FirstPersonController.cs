@@ -98,6 +98,7 @@ namespace StarterAssets
 		private WeaponZoom _weaponZoom;
 		private WeaponSwitcher _weaponSwitcher;
 		private DoorOpener[] _doorOpeners;
+		private FlashlightSystem _flashLightSystem;
 
 		private void Awake()
 		{
@@ -115,6 +116,7 @@ namespace StarterAssets
 			_weaponZoom = GetComponentInChildren<WeaponZoom>();
 			_weaponSwitcher = GetComponentInChildren<WeaponSwitcher>();
 			_doorOpeners = FindObjectsOfType<DoorOpener>();
+			_flashLightSystem = GetComponentInChildren<FlashlightSystem>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
@@ -137,6 +139,7 @@ namespace StarterAssets
 			Zoom();
 			SwitchWeapon();
 			OpenDoor();
+			SwitchFlashLight();
 		}
 
 		private void LateUpdate()
@@ -311,6 +314,11 @@ namespace StarterAssets
 	
 				_input.interact = false;	
 			}
+		}
+
+		private void SwitchFlashLight()
+		{
+			_flashLightSystem.KillTheLight(_input.switchFlashLight);
 		}
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
