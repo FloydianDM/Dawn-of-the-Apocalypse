@@ -7,8 +7,6 @@ namespace DawnOfTheApocalypse
     public class DoorOpener : MonoBehaviour
     {
         public bool IsExecuteOpening; // pass this bool value to FirstPersonController.cs
-        public bool IsTouched;
-
         [SerializeField] private bool _isOpened;
         private Vector3 _originalPosition = new();
 
@@ -28,7 +26,7 @@ namespace DawnOfTheApocalypse
             {
                 _isOpened = true;
                 Debug.Log("Door interacted");
-                transform.position += new Vector3(10,0,0);
+                transform.localPosition += new Vector3(0.5f,0,0);
             }    
             else if (IsExecuteOpening && _isOpened)
             {
