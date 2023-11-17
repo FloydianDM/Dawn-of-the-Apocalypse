@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -14,10 +15,14 @@ namespace DawnOfTheApocalypse
         [SerializeField] private float minimumLightAngle = 35f;
 
         private Light _flashLightLight;
+        private float _startedLightIntensity;
+        private float _startedLightAngle;
 
         private void Start()
         {   
-            _flashLightLight = GetComponent<Light>(); 
+            _flashLightLight = GetComponent<Light>();
+            _startedLightIntensity = _flashLightLight.intensity;
+            _startedLightAngle = _flashLightLight.spotAngle; 
         }
 
         private void Update()
@@ -44,6 +49,12 @@ namespace DawnOfTheApocalypse
             }
 
             _flashLightLight.spotAngle -= angleFade * Time.deltaTime;
+        }
+
+        public void RestoreLight()
+        {
+            _flashLightLight.intensity = _startedLightIntensity;
+            _flashLightLight.spotAngle = _startedLightAngle;
         }
 
         public void KillTheLight(bool isLightOn)

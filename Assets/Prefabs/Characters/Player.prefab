@@ -203,6 +203,8 @@ GameObject:
   - component: {fileID: 5373605385966018662}
   - component: {fileID: 4420491476712093534}
   - component: {fileID: 5716459084103643015}
+  - component: {fileID: 4288723623359597340}
+  - component: {fileID: 2738983640774541529}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -322,6 +324,7 @@ MonoBehaviour:
   previousWeapon: 0
   nextWeapon: 0
   interact: 0
+  switchFlashLight: 0
   analogMovement: 0
   mouseSensitivity: 1
   zoomInMouseSensitivity: 0.5
@@ -473,10 +476,49 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.77096844
-  m_Height: 2.6036758
+  m_Radius: 1.0999928
+  m_Height: 3.5450077
   m_Direction: 1
-  m_Center: {x: 0.11499977, y: 0.8018379, z: 0.015654564}
+  m_Center: {x: 0.11499977, y: 0.9852629, z: 0.34467888}
+--- !u!114 &4288723623359597340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368648846044913036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c591087b8d940564e8e58369c8625717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &2738983640774541529
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368648846044913036}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &790433467890189005
 PrefabInstance:
   m_ObjectHideFlags: 0
