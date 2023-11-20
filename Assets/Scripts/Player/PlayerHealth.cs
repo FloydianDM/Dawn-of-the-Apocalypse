@@ -21,13 +21,14 @@ namespace DawnOfTheApocalypse
             if (IsDeath()) return;
 
             _playerHitPoint -= damage;
+            StartCoroutine(_uiController.ControlDamageCanvas());
         }
 
         private bool IsDeath()
         {
             if (_playerHitPoint <= 0)
             {
-                _uiController.isDead = true;
+                _uiController.IsDead = true;
                 return true;
             }
             

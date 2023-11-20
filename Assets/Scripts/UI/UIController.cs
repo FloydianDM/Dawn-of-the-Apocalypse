@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,29 +12,35 @@ namespace DawnOfTheApocalypse
     {
         [SerializeField] private Canvas gunReticleCanvas;
         [SerializeField] private Canvas gameOverCanvas;
+        [SerializeField] private Canvas ammoCanvas;
+        [SerializeField] private Canvas damageCanvas;
 
-        public bool isDead;
+        public bool IsDead;
+        public bool IsTakeDamage;
         private WeaponSwitcher _weaponSwitcher;
     
         private void Start()
         {
             gameOverCanvas.enabled = false;
+            damageCanvas.enabled = false;
             _weaponSwitcher = FindObjectOfType<WeaponSwitcher>();
         }
 
         private void Update()
         {
-            DeathController();
+            ControlDeath();
         }
 
-        private void DeathController()
+        private void ControlDeath()
         {
             gunReticleCanvas.enabled = true;
+            ammoCanvas.enabled = true;
             gameOverCanvas.enabled = false;
         
-            if (isDead)
+            if (IsDead)
             {
                 gunReticleCanvas.enabled = false;
+                ammoCanvas.enabled = false;
                 gameOverCanvas.enabled = true;
                 
                 Time.timeScale = 0;
@@ -48,7 +55,15 @@ namespace DawnOfTheApocalypse
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
+        }
+
+        public IEnumerator ControlDamageCanvas()
+        {            
+            damageCanvas.enabled = true;
         
+            yield return new WaitForSeconds(0.2f);
+
+            damageCanvas.enabled = false;
         }
     }
 }

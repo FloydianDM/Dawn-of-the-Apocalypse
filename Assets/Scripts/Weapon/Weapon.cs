@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,12 +25,23 @@ namespace DawnOfTheApocalypse
         [SerializeField] private float fireRate = 0.5f;
         [SerializeField] private Ammo ammoSlot;
         [SerializeField] private AmmoType ammoType;
+        [SerializeField] private TextMeshProUGUI ammoText;
 
         public bool isReadyToShoot;
 
         private void Start()
         {
             isReadyToShoot = true;
+        }
+
+        private void Update()
+        {
+            ChangeAmmoDisplay();
+        }
+
+        private void ChangeAmmoDisplay()
+        {
+            ammoText.text = $"Ammo: {ammoSlot.GetCurrentAmmo(ammoType)}";
         }
 
         public IEnumerator Shoot()

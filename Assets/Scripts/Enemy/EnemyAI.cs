@@ -8,10 +8,11 @@ namespace DawnOfTheApocalypse
 {
     public class EnemyAI : MonoBehaviour
     {
-        [SerializeField] private Transform target;
+        
         [SerializeField] private float chaseRange = 5f;
         [SerializeField] private float turnSpeed = 2f;
 
+        private Transform _target;
         private EnemyHealth _enemyHealth;
         private NavMeshAgent _navMeshAgent;
         private Animator _animator;
@@ -21,6 +22,7 @@ namespace DawnOfTheApocalypse
 
         private void Start()
         {
+            _target = FindObjectOfType<PlayerHealth>().transform;
             _enemyHealth = GetComponent<EnemyHealth>();
             _animator = GetComponent<Animator>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -66,7 +68,7 @@ namespace DawnOfTheApocalypse
         { 
             _animator.SetBool("attack", false);
             _animator.SetTrigger("move");       
-            _navMeshAgent.SetDestination(target.position);
+            _navMeshAgent.SetDestination(_target.position);
         }
     
         private void AttackTarget()
@@ -76,7 +78,7 @@ namespace DawnOfTheApocalypse
     
         private void MeasureDistance()
         {
-            _distanceToTarget = Mathf.Abs(Vector3.Distance(target.position, transform.position));
+            _distanceToTarget = Mathf.Abs(Vector3.Distance(_target.position, transform.position));
     
             if (_distanceToTarget <= chaseRange || _isDamageTaken)
             {
@@ -90,7 +92,7 @@ namespace DawnOfTheApocalypse
 
         private void FaceTarget()
         {
-            Vector3 direction = (target.position - transform.position).normalized;
+            Vector3 direction = (_target.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed);
         }

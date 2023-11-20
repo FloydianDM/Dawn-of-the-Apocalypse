@@ -101,9 +101,7 @@ namespace StarterAssets
 		private FlashlightSystem _flashLightSystem;
 
 		private void Awake()
-		{
-			_weapon = GetComponentInChildren<Weapon>();
-			
+		{	
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
@@ -273,6 +271,8 @@ namespace StarterAssets
 
 		private void Shoot()
 		{
+			_weapon = GetComponentInChildren<Weapon>();
+			
 			if (_input.shoot && _weapon.isReadyToShoot)
 			{
 				StartCoroutine(_weapon.Shoot());

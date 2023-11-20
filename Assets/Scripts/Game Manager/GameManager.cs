@@ -33,7 +33,7 @@ namespace DawnOfTheApocalypse
         public void RestartGame()
         {
             SceneManager.LoadScene(0);
-            _uiController.isDead = false;
+            _uiController.IsDead = false;
         }
 
         public void QuitGame()

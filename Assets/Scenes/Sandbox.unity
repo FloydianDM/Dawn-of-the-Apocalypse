@@ -995,6 +995,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3248315488105561783, guid: 687dbafc2b84b2846b9a4a7a7dae2a7e, type: 3}
   m_PrefabInstance: {fileID: 509224946}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1099374641 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2563500245694084457, guid: 1e7ad7b5c1b35a54b83e25fd3f404a1a, type: 3}
+  m_PrefabInstance: {fileID: 1171969450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1171969450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2014,6 +2025,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2328239836421148776, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1099374641}
+    - target: {fileID: 4420491476712093534, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+      propertyPath: ammoSlots.Array.data[0].ammoType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537267987945998297, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1099374641}
+    - target: {fileID: 5239965545741475709, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.20000046
+      objectReference: {fileID: 0}
+    - target: {fileID: 5239965545741475709, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0000003874302
+      objectReference: {fileID: 0}
     - target: {fileID: 5368648846044913036, guid: 6457c8604fe6c2949986c58c7f7596fb, type: 3}
       propertyPath: m_Name
       value: Player
