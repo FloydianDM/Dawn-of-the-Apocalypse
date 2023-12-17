@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Visyde{
-	public class V_Text : MonoBehaviour {
+namespace Visyde
+{
+    public class V_Text : MonoBehaviour {
 
 		public Text crosshairNameText;
 		V_SMC_Handler handler;

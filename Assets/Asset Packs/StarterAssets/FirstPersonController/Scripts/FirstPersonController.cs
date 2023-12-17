@@ -1,8 +1,5 @@
 ﻿using DawnOfTheApocalypse;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using System.Buffers.Text;
-using UnityEngine.UIElements.Experimental;
 
 
 
@@ -12,7 +9,7 @@ using UnityEngine.InputSystem;
 
 namespace StarterAssets
 {
-	[RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM
 	[RequireComponent(typeof(PlayerInput))]
 #endif

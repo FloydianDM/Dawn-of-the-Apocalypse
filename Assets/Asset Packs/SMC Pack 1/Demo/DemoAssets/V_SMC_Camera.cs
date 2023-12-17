@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Visyde{
-	public class V_SMC_Camera : MonoBehaviour {
+namespace Visyde
+{
+    public class V_SMC_Camera : MonoBehaviour {
 
 		// The handler of crosshair sprites:
 		public V_SMC_Handler crosshairHandler;

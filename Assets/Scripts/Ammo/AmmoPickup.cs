@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DawnOfTheApocalypse
 {
-   public class AmmoPickup : MonoBehaviour
+    public class AmmoPickup : MonoBehaviour
    {
       [SerializeField] private int pickedAmmoAmount = 10;
       [SerializeField] AmmoType ammoType;
